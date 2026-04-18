@@ -1,0 +1,319 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.pantalla-juego {
+  min-height: 100vh;
+  padding: 24px;
+  background: #1f1f1f;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-principal {
+  width: 100%;
+  max-width: 1050px;
+  background: #0f2150;
+  border: 3px solid #123b87;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #ffffff;
+  }
+
+  p {
+    margin: 6px 0 0;
+    color: #b7c8f3;
+  }
+}
+
+.boton-reiniciar {
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+  }
+}
+
+.panel-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: #12275f;
+  border: 2px solid #1b3f95;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+}
+
+.dato {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.etiqueta {
+  font-size: 0.85rem;
+  color: #8ea9eb;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.valor {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.valor.terminado {
+  color: #ff6b6b;
+}
+
+.contenedor-tablero {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.tablero {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px;
+  background: #16306f;
+  border: 3px solid #204ba8;
+  border-radius: 12px;
+}
+
+.fila {
+  display: flex;
+  gap: 5px;
+}
+
+.cuadro {
+  width: 46px;
+  height: 46px;
+  border: 3px solid #9a9a9a;
+  background: #c9c9c9;
+  font-size: 1.65rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  user-select: none;
+}
+
+.cuadro.levantado {
+  background: #d9d9d9;
+  border-color: #8c8c8c;
+}
+
+.cuadro.actual {
+  border-color: #ffd54a;
+  box-shadow: 0 0 0 3px rgba(255, 213, 74, 0.35);
+  transform: scale(1.03);
+}
+
+.cuadro.mina {
+  color: #000000;
+}
+
+.numero-1 {
+  color: #0000ff;
+}
+
+.numero-2 {
+  color: #008000;
+}
+
+.numero-3 {
+  color: #ff0000;
+}
+
+.numero-4 {
+  color: #000080;
+}
+
+.numero-5 {
+  color: #800000;
+}
+
+.numero-6 {
+  color: #008b8b;
+}
+
+.numero-7 {
+  color: #000000;
+}
+
+.numero-8 {
+  color: #808080;
+}
+
+.barra-inferior {
+  background: #0a1030;
+  border: 2px solid #173888;
+  border-radius: 18px;
+  padding: 14px 18px;
+}
+
+.dialogo-abajo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.texto-dialogo {
+  font-weight: bold;
+  color: #dfe7ff;
+}
+
+.acciones-dialogo {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.boton-opcion,
+.boton-confirmar,
+.boton-cancelar {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.boton-opcion {
+  background: #1e326d;
+  color: #ffffff;
+}
+
+.boton-opcion.activo {
+  background: #3557c7;
+}
+
+.boton-confirmar {
+  background: #22c55e;
+  color: #081c0f;
+}
+
+.boton-cancelar {
+  background: #ff4d6d;
+  color: white;
+}
+
+.boton-opcion:hover,
+.boton-confirmar:hover,
+.boton-cancelar:hover {
+  transform: translateY(-1px);
+}
+
+.entrada-numero {
+  width: 70px;
+  height: 42px;
+  border-radius: 10px;
+  border: 2px solid #3155b9;
+  background: #0b1540;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: none;
+}
+
+.error-dialogo {
+  color: #ff7b7b;
+  font-size: 0.92rem;
+  font-weight: bold;
+}
+
+.mensaje-mini {
+  color: #dfe7ff;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .cuadro {
+    width: 40px;
+    height: 40px;
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pantalla-juego {
+    padding: 12px;
+  }
+
+  .panel-principal {
+    padding: 14px;
+  }
+
+  .encabezado {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .panel-info {
+    flex-direction: column;
+  }
+
+  .cuadro {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    border-width: 2px;
+  }
+
+  .tablero {
+    gap: 4px;
+    padding: 10px;
+  }
+
+  .fila {
+    gap: 4px;
+  }
+
+  .acciones-dialogo {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .entrada-numero {
+    width: 100%;
+  }
+}

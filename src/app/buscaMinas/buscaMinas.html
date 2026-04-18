@@ -1,0 +1,106 @@
+<div class="pantalla-juego">
+  <div class="panel-principal">
+    <div class="encabezado">
+      <div>
+        <h1>{{ titulo }}</h1>
+        <p>{{ subtitulo }}</p>
+      </div>
+
+      <button class="boton-reiniciar" (click)="reiniciarJuego()">
+        Reiniciar
+      </button>
+    </div>
+
+    <div class="panel-info">
+      <div class="dato">
+        <span class="etiqueta">Estado</span>
+        <span class="valor" [class.terminado]="juegoTerminado">
+          {{ mensajeEstado }}
+        </span>
+      </div>
+
+      <div class="dato">
+        <span class="etiqueta">Levantados</span>
+        <span class="valor">{{ totalLevantados }}</span>
+      </div>
+    </div>
+
+    <div class="contenedor-tablero">
+      <div class="tablero">
+        <div class="fila" *ngFor="let fila of tablero">
+          <div
+            class="cuadro"
+            *ngFor="let cuadro of fila"
+            [class.levantado]="cuadro.levantado"
+            [class.mina]="cuadro.esMina"
+            [class.actual]="esCuadroActual(cuadro)"
+            [ngClass]="obtenerClaseNumero(cuadro)"
+          >
+            {{ obtenerTextoCuadro(cuadro) }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="barra-inferior">
+      <div class="dialogo-abajo" *ngIf="dialogoVisible && !juegoTerminado">
+        <div class="texto-dialogo">
+          La IA seleccionó este cuadro. ¿Qué quieres registrar?
+        </div>
+
+        <div class="acciones-dialogo">
+          <button
+            class="boton-opcion"
+            [class.activo]="opcionElegida === 'mina'"
+            (click)="elegirMina()"
+          >
+            Mina
+          </button>
+
+          <button
+            class="boton-opcion"
+            [class.activo]="opcionElegida === 'numero'"
+            (click)="elegirNumero()"
+          >
+            Número
+          </button>
+
+        <input
+        *ngIf="opcionElegida === 'numero'"
+        class="entrada-numero"
+        type="text"
+        maxlength="1"
+        [(ngModel)]="numeroEscrito"
+        (input)="marcarNumeroAutomaticamente()"
+        placeholder="1-8"
+        />
+
+          <button
+            type="button"
+            class="boton-confirmar"
+            (click)="confirmarJugada()"
+            [disabled]="!puedeConfirmar()"
+            >
+            Confirmar
+            </button>
+
+          <button class="boton-cancelar" (click)="cancelarJugada()">
+            Cancelar
+          </button>
+        </div>
+
+        <div class="error-dialogo" *ngIf="errorDialogo">
+          {{ errorDialogo }}
+        </div>
+      </div>
+
+      <div class="mensaje-mini" *ngIf="!dialogoVisible || juegoTerminado">
+        {{
+          juegoTerminado
+            ? 'La partida terminó'
+            : 'Esperando respuesta del usuario o próxima jugada de la IA'
+        }}
+      </div>
+    </div>
+  </div>
+</div>
